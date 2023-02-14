@@ -19,6 +19,9 @@ public class TileBoard : MonoBehaviour
     public Transform _editableBoard;
     public Transform _displayBoard;
 
+    public GameObject[,] _displayBoards;
+    public List<GameObject[,]> _displayLayer = new List<GameObject[,]>();
+
     public GameObject[,] _boardTile;
 
     StageControl _stageControl;
@@ -27,13 +30,15 @@ public class TileBoard : MonoBehaviour
 
     private void Start()
     {
-        _stageControl = GameObject.Find("StageControl").GetComponent<StageControl>();
 
-        _stage = _stageControl._stage;
-        _width = _stageControl._width;
-        _height = _stageControl._height;
-        _layer = _stageControl._layer;
-
+        if (GameObject.Find("StageControl") != null)
+        {
+            _stageControl = GameObject.Find("StageControl").GetComponent<StageControl>();
+            _stage = _stageControl._stage;
+            _width = _stageControl._width;
+            _height = _stageControl._height;
+            _layer = _stageControl._layer;
+        }
 
         _inputLayer.onValueChanged.AddListener(delegate{
             print(_inputLayer.text);
@@ -119,6 +124,7 @@ public class TileBoard : MonoBehaviour
     {
         for (int layer  = 0; layer < _layer; layer++)
         {
+           _displayBoards = new GameObject[_width, _height];
             for (int x=0; x<_width; x++)
             {
                 for (int y=0; y<_height; y++)
@@ -130,8 +136,14 @@ public class TileBoard : MonoBehaviour
                     _displayTile.GetComponent<Toggle>().interactable = false;
                     _displayTile.transform.name = "DisplayTile " + x + " " + y;
 
+                    if (layer % 2 == 0){
+                        _displayTile.transform.localPosition = new Vector3(x * _tileSize + 100+13, y * _tileSize - 130 + ((10 - _height) * 10)+13, 0);
+                    }
                     _displayTile.GetComponent<Tile>()._x = x;
                     _displayTile.GetComponent<Tile>()._y = y;
+
+                    _displayBoards[x, y] = _displayTile;
+                    _displayLayer.Add(_displayBoards);
                 }
             }
         }
@@ -149,5 +161,4 @@ public class TileBoard : MonoBehaviour
     {
         SceneManager.LoadScene("StageScene");
     }
-
-}
+};
