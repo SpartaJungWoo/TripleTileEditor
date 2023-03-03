@@ -1848,7 +1848,7 @@ MonoBehaviour:
   _stage: 1
   _width: 10
   _height: 10
-  _layer: 7
+  _layer: 1
   _inputStage: {fileID: 948671575}
   _inputWidth: {fileID: 240898304}
   _inputHeight: {fileID: 1336858249}
