@@ -184,7 +184,6 @@ public class TileBoard : MonoBehaviour
 
         else
         {
-            print($"{_currentStage} {_currentLayer} {x} {y} {toggle.isOn}");
             _stages[_currentStage][_currentLayer][x, y] = toggle.isOn;
             _displayBoard.GetChild(_currentLayer).GetChild(x * _height + y).GetComponent<Toggle>().isOn = toggle.isOn;
             SetCount(toggle.isOn);

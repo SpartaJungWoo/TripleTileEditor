@@ -1458,6 +1458,19 @@
     ],
     [
       [
+        true,
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      [
+        true,
         false,
         false,
         false,
@@ -1466,70 +1479,58 @@
         false,
         false,
         false,
-        false,
-        false
+        true
       ],
       [
         false,
         false,
+        true,
+        true,
         false,
         false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ],
-      [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
+        true,
+        true,
         false,
         false
       ],
       [
+        true,
         false,
         false,
         false,
+        true,
+        true,
         false,
         false,
         false,
+        true
+      ],
+      [
+        true,
         false,
         false,
         false,
-        false
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
       ],
       [
         false,
         false,
+        true,
+        true,
         false,
         false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ],
-      [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
+        true,
+        true,
         false,
         false
       ],
       [
+        true,
         false,
         false,
         false,
@@ -1538,24 +1539,36 @@
         false,
         false,
         false,
-        false,
-        false
+        true
       ],
       [
+        true,
+        true,
         false,
         false,
+        true,
+        true,
         false,
         false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
+        true,
+        true
       ]
     ],
     [
       [
+        true,
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      [
+        true,
         false,
         false,
         false,
@@ -1564,70 +1577,70 @@
         false,
         false,
         false,
-        false,
-        false
+        true
       ],
       [
         false,
         false,
+        true,
+        true,
         false,
         false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ],
-      [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
+        true,
+        true,
         false,
         false
       ],
       [
+        true,
+        false,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true
+      ],
+      [
+        true,
         false,
         false,
         false,
+        true,
+        true,
         false,
         false,
         false,
+        true
+      ],
+      [
+        true,
+        false,
+        true,
+        true,
         false,
         false,
+        true,
+        true,
         false,
-        false
+        true
       ],
       [
         false,
         false,
+        true,
+        true,
         false,
         false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ],
-      [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
+        true,
+        true,
         false,
         false
       ],
       [
+        true,
         false,
         false,
         false,
@@ -1636,32 +1649,19 @@
         false,
         false,
         false,
-        false,
-        false
+        true
       ],
       [
+        true,
+        true,
         false,
         false,
+        true,
+        true,
         false,
         false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ],
-      [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
+        true,
+        true
       ]
     ],
     [
@@ -3223,6 +3223,6 @@
   "height": 10,
   "stageIndex": 1,
   "layer": 31,
-  "type": 7,
-  "count": 0
+  "type": 10,
+  "count": 72
 }

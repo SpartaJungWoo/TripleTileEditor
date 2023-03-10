@@ -11,10 +11,10 @@ public class StageCreater : MonoBehaviour
     public Tile _tilePrefab;
     int _tileSize = 65;
     JsonStageData jsonStageData;
-    List<Tile[,]> tiless = new List<Tile[,]>();
     List<Tile> tiles = new List<Tile>();
 
-    public List<GameObject> ClickTile = new List<GameObject>();
+    List<Tile> _clickTile = new List<Tile>(); 
+    public List<GameObject> _clickTileSlot = new List<GameObject>();
     int clickTileCount = 0;
     int tileCount;
 
@@ -54,7 +54,6 @@ public class StageCreater : MonoBehaviour
                 _layerHeight = _layerHeight + 20f;
             }
 
-            tiless.Add(new Tile[width,height]);
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
@@ -80,13 +79,11 @@ public class StageCreater : MonoBehaviour
                         _toggle.onValueChanged.AddListener(delegate { UpdateTile(_toggle); });
 
 
-                        tiless[layer][x, y] = _displayTile.GetComponent<Tile>();
                         tiles.Add(_displayTile.GetComponent<Tile>());
 
                         Vector3 displayTilePos = new Vector3((x * _tileSize) * _tileScale, (y * _tileSize + ((height) * 10)) * _tileScale, layer);
                         _displayTile.transform.localPosition = displayTilePos - new Vector3(width * _tileSize * (_tileScale/2), height * _tileSize * (_tileScale / 2), 0) + new Vector3(0, _layerHeight, 0);
 
-                        Debug.Log($"{layer} {x} {y} {JsonstageData.stages[layer][x, y]}");
                         _displayTile.GetComponent<Toggle>().isOn = JsonstageData.stages[layer][x, y];
                     }
                 }
@@ -107,7 +104,6 @@ public class StageCreater : MonoBehaviour
             for (int r = 0; r < 3; r++)
             {
                 int rand = Random.Range(0, tiles.Count);
-                print(type);
                 tiles[rand]._type = type;
                 tiles[rand].SetType(type);
                 tiles.RemoveAt(rand);
@@ -125,10 +121,92 @@ public class StageCreater : MonoBehaviour
     {
         if (!_initBoard)
         {
-            _toggle.transform.parent = ClickTile[clickTileCount].transform;
+            print("Update! " + clickTileCount);
+            _clickTile.Add(_toggle.gameObject.GetComponent<Tile>());
+            _clickTileSlot[clickTileCount].transform.GetChild(0).gameObject.SetActive(true);
+            _toggle.transform.parent = _clickTileSlot[clickTileCount].transform;
             _toggle.transform.localPosition = Vector3.zero;
             _toggle.interactable = false;
             clickTileCount++;
+
+            TileSort(_toggle.GetComponent<Tile>());
         }
     }
+
+
+
+    public void TileSort(Tile tile)
+    {
+        Tile[] DestroyTile = new Tile[3];
+        int clickTileCountTemp = _clickTile.Count-1;
+
+        for (int clickTileCountNum = clickTileCountTemp- 1; clickTileCountNum >= 0; clickTileCountNum--)
+        {
+            if (_clickTile[clickTileCountNum]._type == tile._type)
+            {
+                for (int swapCount = clickTileCountNum; swapCount < clickTileCountTemp; swapCount++)
+                {
+                    Tile temp;
+                    temp = _clickTile[swapCount];
+                    _clickTile[swapCount] = _clickTile[clickTileCountTemp];
+                    _clickTile[clickTileCountTemp] = temp;
+                }
+                break;
+            }
+        }
+
+        //_clickTile.Sort((a, b) => a._type.CompareTo(b._type));
+
+
+        for (int i = 0; i < _clickTile.Count; i++)
+        {
+            _clickTile[i].transform.parent = _clickTileSlot[i].transform;
+            _clickTile[i].transform.localPosition = Vector3.zero;
+        }
+
+
+        int[] Type = new int[StageData.type];
+        List<Tile[]> tileType = new List<Tile[]>();
+
+
+        for (int i=0; i < StageData.type; i++)
+        {
+            tileType.Add(new Tile[3]);
+        }
+
+
+        for (int i=0; i< _clickTile.Count; i++)
+        {
+            Type[_clickTile[i]._type]++;
+
+            tileType[_clickTile[i]._type][Type[_clickTile[i]._type]-1] = _clickTile[i];
+            if (Type[_clickTile[i]._type] >= 3)
+            {
+                for (int j=0; j<3; j++)
+                {
+                    DestroyTile[j] = tileType[_clickTile[i]._type][j];
+                }
+                Type[_clickTile[i]._type] = 0;
+
+
+                for (int destroyCount = 0; destroyCount < 3; destroyCount++)
+                {
+                    _clickTile.Remove(DestroyTile[destroyCount]);
+                    Destroy(DestroyTile[destroyCount].gameObject);
+                    _clickTileSlot[clickTileCountTemp-destroyCount].transform.GetChild(0).gameObject.SetActive(false);
+                }
+
+                clickTileCount = clickTileCount - 3;
+            }
+        }
+
+
+        for (int i = 0; i < _clickTile.Count; i++)
+        {
+            _clickTile[i].transform.parent = _clickTileSlot[i].transform;
+            _clickTile[i].transform.localPosition = Vector3.zero;
+        }
+        return;
+    }
+
 }
