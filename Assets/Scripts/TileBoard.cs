@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Security.Cryptography;
-using static UnityEditor.Experimental.GraphView.GraphView;
+//using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TileBoard : MonoBehaviour
 {
@@ -340,6 +340,8 @@ public class TileBoard : MonoBehaviour
                 }
             }
         }
+        _count = 0;
+        _inputFieldCount.text = _count.ToString();
     }
 
 

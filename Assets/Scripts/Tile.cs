@@ -11,47 +11,17 @@ public class Tile : MonoBehaviour
 
     public int _type;
 
+    public bool _thisTopTile = false;
+
     public int _boardSize = 0;
     public bool _playingGame = false;
 
     public List<Sprite> _typeImage;
 
-    public List<bool> _topTile = new List<bool>();
+    public List<bool> _topTile;
 
-    public List<bool[,]> _stages = new List<bool[,]>();
 
-    private void Start()
-    {
-        _stages = StageData.stage;
 
-        //if (_playingGame)
-        //{
-        //    if (_boardSize == 90)
-        //    {
-        //        if (_y > 0)
-        //        {
-        //            _topTile.Add(_stages[_z][_x, _y - 1]);
-        //            _topTile.Add(_stages[_z][_x + 1, _y - 1]);
-        //        }
-        //        if (_y < 9)
-        //        {
-        //            _topTile.Add(_stages[_z][_x, _y]);
-        //            _topTile.Add(_stages[_z][_x + 1, _y]);
-        //        }
-        //    }
-
-        //    else
-        //    {
-        //        if (_x > 0)
-        //        {
-        //            _topTile.Add(_stages[_z][_x - 1, _y]);
-        //            _topTile.Add(_stages[_z][_x - 1, _y + 1]);
-        //        }
-        //        _topTile.Add(_stages[_z][_x, _y]);
-        //        _topTile.Add(_stages[_z][_x, _y + 1]);
-        //    }
-        //}
-    }
 
     public void SetType(int Type)
     {
@@ -60,10 +30,196 @@ public class Tile : MonoBehaviour
     }
 
 
+
     public void TopTile()
     {
-        
+        bool ThisTopTile = false;
+        for (int toptileCount=0; toptileCount < _topTile.Count; toptileCount++)
+        {
+            ThisTopTile = ThisTopTile | _topTile[toptileCount];
+            print("Name : " + this.name + "\n Top!! " + _topTile.Count + "\n OntopTile" + _topTile[toptileCount] + "\nthisTopTile " + ThisTopTile) ;
+        }
+        _thisTopTile = ThisTopTile;
 
-        
+        transform.GetChild(1).gameObject.SetActive(ThisTopTile);
+        GetComponent<Toggle>().interactable = !ThisTopTile;
+
     }
-}
+
+    public void InitTopTile(List<bool[,]> stage)
+    {
+        _topTile = new List<bool>();
+
+        int _zplus = _z + 1;
+        if (_playingGame)
+        {
+            if (_boardSize == 90)
+            {
+                Debug.Log(_x + " " + _y);
+                switch (_x)
+                {
+                    case 0:
+                        switch (_y)
+                        {
+                            case 9:
+                                _topTile.Add(stage[_zplus][0, 9]);
+                                return;
+
+                            default:
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y + 1]);
+                                return;
+                        }
+
+                    case 1:
+                        switch (_y)
+                        {
+                            case 9:
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+
+                                return;
+                            default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
+                                _topTile.Add(stage[_zplus][_x, _y + 1]);
+
+                                return;
+                        }
+
+                    case 2:
+                        switch (_y)
+                        {
+                            case 9:
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                return;
+                            default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
+                                _topTile.Add(stage[_zplus][_x, _y + 1]);
+                                return;
+                        }
+
+                    case 3:
+                        switch (_y)
+                        {
+                            case 9:
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                return;
+                            default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
+                                _topTile.Add(stage[_zplus][_x, _y + 1]);
+                                return;
+                        }
+
+                    case 4:
+                        switch (_y)
+                        {
+                            case 9:
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                return;
+                            default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
+                                _topTile.Add(stage[_zplus][_x, _y + 1]);
+                                return;
+                        }
+
+                    case 5:
+                        switch (_y)
+                        {
+                            case 9:
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                return;
+                            default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
+                                _topTile.Add(stage[_zplus][_x, _y + 1]);
+                                return;
+                        }
+
+                    case 6:
+                        switch (_y)
+                        {
+                            case 9:
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                return;
+                            default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
+                                _topTile.Add(stage[_zplus][_x, _y + 1]);
+                                return;
+                        }
+
+                    case 7:
+                        switch (_y)
+                        {
+                            case 9:
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                return;
+                            default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
+                                _topTile.Add(stage[_zplus][_x, _y + 1]);
+                                return;
+                        }
+
+                    case 8:
+                        switch (_y)
+                        {
+                            case 9:
+                                _topTile.Add(stage[_zplus][7, 9]);
+                                return;
+                            default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
+                            return;
+                        }
+
+                    default:
+                        _topTile.Add(stage[_zplus][_x - 1, _y]);
+                        _topTile.Add(stage[_zplus][_x, _y]);
+                        _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
+                        _topTile.Add(stage[_zplus][_x, _y + 1]);
+                        return;
+                }
+            }
+
+            else
+            {
+                print(_x + " " + _y);
+
+                switch (_y)
+                {
+                    case 0:
+                        _topTile.Add(stage[_zplus][_x, _y]);
+                        _topTile.Add(stage[_zplus][_x + 1, _y]);
+                        return;
+
+                    default:
+
+                        _topTile.Add(stage[_zplus][_x, _y - 1]);
+                        _topTile.Add(stage[_zplus][_x + 1, _y - 1]);
+                        _topTile.Add(stage[_zplus][_x, _y]);
+                        _topTile.Add(stage[_zplus][_x + 1, _y]);
+                        return;
+
+                }
+            }
+        }
+        }
+    }

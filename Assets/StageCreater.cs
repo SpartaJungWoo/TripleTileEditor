@@ -12,6 +12,8 @@ public class StageCreater : MonoBehaviour
     int _tileSize = 65;
     JsonStageData jsonStageData;
     List<Tile> tiles = new List<Tile>();
+    List<Tile> _saveTiles = new List<Tile>();
+
 
     List<Tile> _clickTile = new List<Tile>(); 
     public List<GameObject> _clickTileSlot = new List<GameObject>();
@@ -80,11 +82,13 @@ public class StageCreater : MonoBehaviour
 
 
                         tiles.Add(_displayTile.GetComponent<Tile>());
+                        _saveTiles.Add(_displayTile.GetComponent<Tile>());
 
                         Vector3 displayTilePos = new Vector3((x * _tileSize) * _tileScale, (y * _tileSize + ((height) * 10)) * _tileScale, layer);
                         _displayTile.transform.localPosition = displayTilePos - new Vector3(width * _tileSize * (_tileScale/2), height * _tileSize * (_tileScale / 2), 0) + new Vector3(0, _layerHeight, 0);
 
                         _displayTile.GetComponent<Toggle>().isOn = JsonstageData.stages[layer][x, y];
+
                     }
                 }
             }
@@ -96,6 +100,8 @@ public class StageCreater : MonoBehaviour
     void ShuffleType()
     {
         int numTypes = StageData.type;
+        List<Tile> randomTypeTiles = new List<Tile>();
+        randomTypeTiles = tiles;
 
         int type = 0;
         for (int i=0; i<tileCount / 3; i++)
@@ -104,11 +110,22 @@ public class StageCreater : MonoBehaviour
             for (int r = 0; r < 3; r++)
             {
                 int rand = Random.Range(0, tiles.Count);
-                tiles[rand]._type = type;
-                tiles[rand].SetType(type);
-                tiles.RemoveAt(rand);
+                randomTypeTiles[rand]._type = type;
+                randomTypeTiles[rand].SetType(type);
+                randomTypeTiles[rand].InitTopTile(jsonStageData.stages);
+                randomTypeTiles[rand].TopTile();
+                randomTypeTiles.RemoveAt(rand);
             }
             type++; 
+        }
+    }
+
+    void UpdateTopTile(List<bool[,]> currentStages)
+    {
+        for (int i=0; i<_saveTiles.Count; i++)
+        {
+            _saveTiles[i].InitTopTile(currentStages);
+            _saveTiles[i].TopTile();
         }
     }
 
@@ -121,13 +138,18 @@ public class StageCreater : MonoBehaviour
     {
         if (!_initBoard)
         {
-            print("Update! " + clickTileCount);
-            _clickTile.Add(_toggle.gameObject.GetComponent<Tile>());
+            Tile _clickTileTemp = _toggle.gameObject.GetComponent<Tile>();
+            _clickTile.Add(_clickTileTemp);
             _clickTileSlot[clickTileCount].transform.GetChild(0).gameObject.SetActive(true);
+            Debug.Log($"_clickTileTemp : {_clickTileTemp._z} \n{_clickTileTemp._x} \n{_clickTileTemp._y} \n{jsonStageData.stages[_clickTileTemp._z ][_clickTileTemp._x, _clickTileTemp._y]}");
+            jsonStageData.stages[_clickTileTemp._z][_clickTileTemp._x, _clickTileTemp._y] = false;
+            _saveTiles.Remove(_clickTileTemp);
             _toggle.transform.parent = _clickTileSlot[clickTileCount].transform;
             _toggle.transform.localPosition = Vector3.zero;
             _toggle.interactable = false;
             clickTileCount++;
+            UpdateTopTile(jsonStageData.stages);
+            
 
             TileSort(_toggle.GetComponent<Tile>());
         }
@@ -144,7 +166,7 @@ public class StageCreater : MonoBehaviour
         {
             if (_clickTile[clickTileCountNum]._type == tile._type)
             {
-                for (int swapCount = clickTileCountNum; swapCount < clickTileCountTemp; swapCount++)
+                for (int swapCount = clickTileCountNum+1; swapCount < clickTileCountTemp; swapCount++)
                 {
                     Tile temp;
                     temp = _clickTile[swapCount];

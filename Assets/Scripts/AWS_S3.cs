@@ -6,7 +6,6 @@ using Amazon;
 using Amazon.CognitoIdentity;
 using Amazon.S3.Model;
 using System.IO;
-using UnityEditor.PackageManager;
 using Amazon.Runtime;
 
 public class AWS_S3 : MonoBehaviour
