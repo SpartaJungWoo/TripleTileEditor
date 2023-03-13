@@ -22,6 +22,8 @@ public class StageCreater : MonoBehaviour
 
     bool _initBoard = false;
 
+    public GameObject _gameOver;
+
     public List<Sprite> _typeImage;
 
     private void Start()
@@ -148,6 +150,10 @@ public class StageCreater : MonoBehaviour
             _toggle.transform.localPosition = Vector3.zero;
             _toggle.interactable = false;
             clickTileCount++;
+            if (clickTileCount >= _clickTileSlot.Count)
+            {
+                _gameOver.SetActive(true);
+            }
             UpdateTopTile(jsonStageData.stages);
             
 

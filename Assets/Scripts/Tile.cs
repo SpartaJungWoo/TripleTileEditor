@@ -61,140 +61,136 @@ public class Tile : MonoBehaviour
                     case 0:
                         switch (_y)
                         {
-                            case 9:
-                                _topTile.Add(stage[_zplus][0, 9]);
-                                return;
-
-                            default:
+                            case 0:
                                 _topTile.Add(stage[_zplus][_x, _y]);
-                                _topTile.Add(stage[_zplus][_x, _y + 1]);
+                                return;
+                            default:
+                                _topTile.Add(stage[_zplus][_x, _y - 1]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
                                 return;
                         }
-
                     case 1:
                         switch (_y)
                         {
-                            case 9:
-                                _topTile.Add(stage[_zplus][_x, _y]);
+                            case 0:
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
-
+                                _topTile.Add(stage[_zplus][_x, _y]);
                                 return;
                             default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y - 1]);
+                                _topTile.Add(stage[_zplus][_x, _y - 1]);
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
                                 _topTile.Add(stage[_zplus][_x, _y]);
-                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
-                                _topTile.Add(stage[_zplus][_x, _y + 1]);
-
                                 return;
                         }
 
                     case 2:
                         switch (_y)
                         {
-                            case 9:
-                                _topTile.Add(stage[_zplus][_x, _y]);
+                            case 0:
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
                                 return;
                             default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y - 1]);
+                                _topTile.Add(stage[_zplus][_x, _y - 1]);
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
                                 _topTile.Add(stage[_zplus][_x, _y]);
-                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
-                                _topTile.Add(stage[_zplus][_x, _y + 1]);
                                 return;
                         }
 
                     case 3:
                         switch (_y)
                         {
-                            case 9:
-                                _topTile.Add(stage[_zplus][_x, _y]);
+                            case 0:
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
                                 return;
                             default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y - 1]);
+                                _topTile.Add(stage[_zplus][_x, _y - 1]);
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
                                 _topTile.Add(stage[_zplus][_x, _y]);
-                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
-                                _topTile.Add(stage[_zplus][_x, _y + 1]);
                                 return;
                         }
 
                     case 4:
                         switch (_y)
                         {
-                            case 9:
-                                _topTile.Add(stage[_zplus][_x, _y]);
+                            case 0:
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
                                 return;
                             default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y - 1]);
+                                _topTile.Add(stage[_zplus][_x, _y - 1]);
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
                                 _topTile.Add(stage[_zplus][_x, _y]);
-                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
-                                _topTile.Add(stage[_zplus][_x, _y + 1]);
                                 return;
                         }
 
                     case 5:
                         switch (_y)
                         {
-                            case 9:
-                                _topTile.Add(stage[_zplus][_x, _y]);
+                            case 0:
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
                                 return;
                             default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y - 1]);
+                                _topTile.Add(stage[_zplus][_x, _y - 1]);
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
                                 _topTile.Add(stage[_zplus][_x, _y]);
-                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
-                                _topTile.Add(stage[_zplus][_x, _y + 1]);
                                 return;
                         }
 
                     case 6:
                         switch (_y)
                         {
-                            case 9:
-                                _topTile.Add(stage[_zplus][_x, _y]);
+                            case 0:
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
                                 return;
                             default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y - 1]);
+                                _topTile.Add(stage[_zplus][_x, _y - 1]);
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
                                 _topTile.Add(stage[_zplus][_x, _y]);
-                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
-                                _topTile.Add(stage[_zplus][_x, _y + 1]);
                                 return;
                         }
 
                     case 7:
                         switch (_y)
                         {
-                            case 9:
-                                _topTile.Add(stage[_zplus][_x, _y]);
+                            case 0:
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
+                                _topTile.Add(stage[_zplus][_x, _y]);
                                 return;
                             default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y - 1]);
+                                _topTile.Add(stage[_zplus][_x, _y - 1]);
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
                                 _topTile.Add(stage[_zplus][_x, _y]);
-                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
-                                _topTile.Add(stage[_zplus][_x, _y + 1]);
                                 return;
                         }
 
                     case 8:
                         switch (_y)
                         {
-                            case 9:
-                                _topTile.Add(stage[_zplus][7, 9]);
+                            case 0:
+                                _topTile.Add(stage[_zplus][_x - 1, _y]);
                                 return;
                             default:
+                                _topTile.Add(stage[_zplus][_x - 1, _y - 1]);
                                 _topTile.Add(stage[_zplus][_x - 1, _y]);
-                                _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
-                            return;
+                                return;
                         }
 
                     default:
-                        _topTile.Add(stage[_zplus][_x - 1, _y]);
+                        _topTile.Add(stage[_zplus][_x-1, _y-1]);
+                        _topTile.Add(stage[_zplus][_x, _y-1]);
+                        _topTile.Add(stage[_zplus][_x-1, _y]);
                         _topTile.Add(stage[_zplus][_x, _y]);
-                        _topTile.Add(stage[_zplus][_x - 1, _y + 1]);
-                        _topTile.Add(stage[_zplus][_x, _y + 1]);
                         return;
                 }
             }
@@ -205,17 +201,18 @@ public class Tile : MonoBehaviour
 
                 switch (_y)
                 {
-                    case 0:
+                    case 9:
                         _topTile.Add(stage[_zplus][_x, _y]);
                         _topTile.Add(stage[_zplus][_x + 1, _y]);
                         return;
 
+                    
                     default:
 
-                        _topTile.Add(stage[_zplus][_x, _y - 1]);
-                        _topTile.Add(stage[_zplus][_x + 1, _y - 1]);
                         _topTile.Add(stage[_zplus][_x, _y]);
-                        _topTile.Add(stage[_zplus][_x + 1, _y]);
+                        _topTile.Add(stage[_zplus][_x, _y+1]);
+                        _topTile.Add(stage[_zplus][_x+1, _y]);
+                        _topTile.Add(stage[_zplus][_x+1, _y+1]);
                         return;
 
                 }

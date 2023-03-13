@@ -223,6 +223,8 @@ public class TileBoard : MonoBehaviour
         }
         _inputFieldStage.text = _currentStage.ToString();
         _inputFieldCount.text = _count.ToString();
+        _inputFieldType.text = _type.ToString();
+        
 
         _onStageChange = false;
         StageDataSave();
