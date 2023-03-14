@@ -10,6 +10,8 @@ using Amazon.Runtime;
 
 public class AWS_S3 : MonoBehaviour
 {
+    public GameObject SaveText;
+    
     string S3BucketName = "stagedata-tripletile";
 
     string IdentityPoolId = "ap-northeast-2:79400e71-0a49-4f8b-9692-351e60a1d156";
@@ -95,9 +97,9 @@ public class AWS_S3 : MonoBehaviour
 
         Debug.Log("Retrieving the file");
 
-        string fileName = "StageData" + stageIndex + ".json";
+        string fileName =  stageIndex + ".json";
 
-        var stream = new FileStream(Application.dataPath + "/Json/" + fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+        var stream = new FileStream(Application.dataPath + "/" + fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
 
         Debug.Log("\nCreating request object");
         var request = new PutObjectRequest()
@@ -114,13 +116,15 @@ public class AWS_S3 : MonoBehaviour
             if (responseObj.Exception == null)
             {
                 Debug.Log(string.Format("\nobject {0} puted to bucket {1}", responseObj.Request.Key, responseObj.Request.BucketName));
+                StartCoroutine(SaveUpdate());
             }
             else
             {
                 Debug.Log("\nException while puting the result object");
                 Debug.Log(string.Format("\n receieved error {0}", responseObj.Response.HttpStatusCode.ToString()));
             }
-        });
+        }); 
+
     }
 
 
@@ -140,10 +144,18 @@ public class AWS_S3 : MonoBehaviour
                 using (StreamReader reader = new StreamReader(response.ResponseStream))
                 {
                     data = reader.ReadToEnd();
+                    
                 }
 
                 Debug.Log("\n" + data);
             }
         });
+    }
+
+    IEnumerator SaveUpdate()
+    {
+        SaveText.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        SaveText.SetActive(false);
     }
 }

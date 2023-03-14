@@ -46,7 +46,6 @@ public class JSonStageData : MonoBehaviour
             stages[i] = stageData;
             SaveStageData(i, stageData);
         }
-
     }
 
 
@@ -72,7 +71,7 @@ public class JSonStageData : MonoBehaviour
     {
         string json = JsonConvert.SerializeObject(stageData, Formatting.Indented);
         //string json = JsonUtility.ToJson(stageData, true);
-        string path = Application.dataPath + "/Json/StageData" + stageIndex + ".json";
+        string path = Application.dataPath + "/" + stageIndex + ".json";
         Debug.Log(json);
         File.WriteAllText(path, json);
     }
@@ -81,7 +80,7 @@ public class JSonStageData : MonoBehaviour
     // Load
     public JsonStageData LoadStageData(int stageIndex)
     {
-        string path = Application.dataPath + "/Json/StageData" + stageIndex + ".json";
+        string path = Application.dataPath + "/" + stageIndex + ".json";
         string json = File.ReadAllText(path);
         JsonStageData stageData = JsonConvert.DeserializeObject<JsonStageData>(json);
         return stageData;

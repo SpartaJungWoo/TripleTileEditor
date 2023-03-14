@@ -65,7 +65,7 @@ public class StageCreater : MonoBehaviour
                     if (JsonstageData.stages[layer][x, y])
                     {
                         GameObject _displayTile = Instantiate(_tilePrefab.gameObject, _displayBoard.GetChild(layer));
-                        _displayTile.GetComponent<Toggle>().interactable = false;
+                        //_displayTile.GetComponent<Toggle>().interactable = false;
                         _displayTile.transform.name = $"DisplayTile {layer} {x} {y}";
 
                          Tile displayTileCompo = _displayTile.GetComponent<Tile>();

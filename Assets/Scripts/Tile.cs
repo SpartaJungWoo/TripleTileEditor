@@ -16,8 +16,6 @@ public class Tile : MonoBehaviour
     public int _boardSize = 0;
     public bool _playingGame = false;
 
-    public List<Sprite> _typeImage;
-
     public List<bool> _topTile;
 
 

@@ -251,41 +251,6 @@ MonoBehaviour:
   _thisTopTile: 0
   _boardSize: 0
   _playingGame: 0
-  _typeImage:
-  - {fileID: 21300000, guid: 7b0119e7d5c674829abf5eb210c138c9, type: 3}
-  - {fileID: 21300000, guid: 1e8a70e7768f741359ee1cb523acb08a, type: 3}
-  - {fileID: 21300000, guid: c49f81626cbc14dde9a055b6e2d18a57, type: 3}
-  - {fileID: 21300000, guid: c2f502cbf17824aed9a8730fc7df6d6b, type: 3}
-  - {fileID: 21300000, guid: d6be558e9dba94d499cedb63982f42f1, type: 3}
-  - {fileID: 21300000, guid: 3c32ca134e5494d88a508d9403a2de0c, type: 3}
-  - {fileID: 21300000, guid: f9c8c9b8a9e734ac9a627b1569f79f76, type: 3}
-  - {fileID: 21300000, guid: 94cd869a7150e4cd2a267d46765c3a24, type: 3}
-  - {fileID: 21300000, guid: cd4dfb3a17ca7419dab8ac3adda38a69, type: 3}
-  - {fileID: 21300000, guid: c4b675ddec38d46c1b7c5e572f25cd06, type: 3}
-  - {fileID: 21300000, guid: 149882b07d27a4a72acd08c11b9f1901, type: 3}
-  - {fileID: 21300000, guid: b2c338d35f71e431c8d529e24d84608e, type: 3}
-  - {fileID: 21300000, guid: 8c5a25ea1a12e4e9a9ddc295bb6ad771, type: 3}
-  - {fileID: 21300000, guid: f2cf93b214ce142859ca87e5cfcd5944, type: 3}
-  - {fileID: 21300000, guid: 747554d6335c24793b34c67426e8b093, type: 3}
-  - {fileID: 21300000, guid: 8098583c1397540298a3bc046fba5aff, type: 3}
-  - {fileID: 21300000, guid: d1c9b902f01af41338902dcaec6fbb55, type: 3}
-  - {fileID: 21300000, guid: 36fdcbb1bb27b48dc8a9ee15f9c37983, type: 3}
-  - {fileID: 21300000, guid: 853bcfb347d4d4ea8aed6868ebfc5499, type: 3}
-  - {fileID: 21300000, guid: 72fb4493f29494cdf9f144bc8ec869b1, type: 3}
-  - {fileID: 21300000, guid: ff618b8d1688e457a8678f071eaa9b1f, type: 3}
-  - {fileID: 21300000, guid: a543f7cdc1283446bbf3dd3c203bc6af, type: 3}
-  - {fileID: 21300000, guid: e9fa386b9faa2486a8795253d4c129ee, type: 3}
-  - {fileID: 21300000, guid: 3153b9b2cd9814acebb5b971626a3168, type: 3}
-  - {fileID: 21300000, guid: cdf4f5fee49df402f9e645176f11d683, type: 3}
-  - {fileID: 21300000, guid: e244b36c84f3c4884b5527ca92129040, type: 3}
-  - {fileID: 21300000, guid: a2fe01cb6ce3b4eb4938ea8062387e85, type: 3}
-  - {fileID: 21300000, guid: f98c87e55008547cfa2a836f58021ae7, type: 3}
-  - {fileID: 21300000, guid: cdb8869e5bd294e589c972e882cba7d9, type: 3}
-  - {fileID: 21300000, guid: e4d082f52735a4a5eb025a33227a880d, type: 3}
-  - {fileID: 21300000, guid: 5cec0407d79d9430dbf81b7046f2b2a8, type: 3}
-  - {fileID: 21300000, guid: bc8e1e5f366074fad871d403e784a6e6, type: 3}
-  - {fileID: 21300000, guid: 2a009350bada04751be2910c66effad0, type: 3}
-  - {fileID: 21300000, guid: d49d40c786b7b4b958044f9afe272942, type: 3}
   _topTile: 
 --- !u!114 &9095206471081211437
 MonoBehaviour:
